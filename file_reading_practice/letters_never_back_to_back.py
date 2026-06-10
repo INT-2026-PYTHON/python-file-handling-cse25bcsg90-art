@@ -53,3 +53,17 @@ Sorted -> ['b', 'd', 'e', 'h', 'k', 'm', 'n',
 =================================================
 
 """
+with open("sowpods.txt", "r") as f:
+    words = f.read().splitlines()
+
+seen = set()
+doubled = set()
+
+for word in words:
+    for i in range(len(word)):
+        seen.add(word[i])
+        if i < len(word) - 1 and word[i] == word[i+1]:
+            doubled.add(word[i])
+
+result = sorted(seen - doubled)
+print(result)
